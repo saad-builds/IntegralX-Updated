@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { projectData } from "../../data/projectData";
 import Header from "../Homepage/Header";
 import Footer from "../Homepage/Footer";
+import { MdOpenInNew } from "react-icons/md";
+
 
 // Animation for each image card with stagger & scale on scroll
 const cardVariants = {
@@ -79,37 +81,14 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
                 </p>
               </div>
 
-              <div className="absolute bottom-4 right-4">
-                <button
-                  className="
-                    relative z-10
-                    px-3 sm:px-4 py-2 sm:py-2.5
-                    text-[14px] sm:text-[15px] font-bold text-white
-                    rounded-[6px]
-                    bg-transparent
-                    border-2 border-transparent
-                    border-[3px] border-[linear-gradient(90deg,#F9D923,#C3367C)] rounded-sm
-                    transition duration-300 ease-in-out
-                    group-hover:bg-white/10
-                    group-hover:backdrop-blur-md
-                    group-hover:shadow-md
-
-                    before:content-[''] before:absolute before:inset-0 before:rounded-[6px]
-                    before:z-[-1] before:opacity-100
-                    before:transition-opacity before:duration-300
-
-                    group-hover:before:opacity-0
-                    group-hover:border-0
-                  "
-                  style={{
-                    borderImage: "linear-gradient(90deg, #F9D923, #C3367C) 1",
-                    borderStyle: "solid",
-                    borderRadius: "6px",
-                  }}
-                >
-                  See More →
-                </button>
-              </div>
+         <div className="absolute bottom-4 right-4">
+  <Link to={detailUrl}>
+  <MdOpenInNew 
+      size={36}
+      className="text-white cursor-pointer transition-colors duration-300 group-hover:text-brand-yellow"
+    />
+  </Link>
+</div>
             </div>
           </div>
         </div>

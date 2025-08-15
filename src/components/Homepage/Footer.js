@@ -30,7 +30,7 @@ const Footer = () => {
   const location = useLocation();
 
   const handleFooterLinkClick = (event, linkConfig) => {
-    const { path, sectionId } = linkConfig;
+    const { sectionId } = linkConfig;
     if (sectionId && location.pathname === "/") {
       event.preventDefault();
       smoothScrollToIdWithOffset(sectionId, "main-header", 0);
@@ -64,7 +64,10 @@ const Footer = () => {
       });
       if (response.success) {
         setEmail("");
-        setTimeout(() => setSubStatus({ loading: false, message: "", error: false }), 5000);
+        setTimeout(
+          () => setSubStatus({ loading: false, message: "", error: false }),
+          5000
+        );
       }
     } catch (err) {
       setSubStatus({
@@ -74,6 +77,10 @@ const Footer = () => {
       });
     }
   };
+
+  // Reusable classes for icon circles: keep border same, darken bg on hover, icon color unchanged
+  const circleClasses =
+    "bg-gray-800 border-[2px] border-gray-800 rounded-full p-3 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900";
 
   return (
     <>
@@ -88,18 +95,17 @@ const Footer = () => {
                 <br />
                 Connect.
               </h2>
-              <img
-                src="/Shape.svg"
-                alt="shape"
-                className="w-[60px] h-[60px]"
-              />
+              <img src="/Shape.svg" alt="shape" className="w-[60px] h-[60px]" />
             </div>
             <p className="text-sm md:text-[16px] text-[#878787] mb-6 max-w-md">
               We're your innovation partner, delivering cutting-edge solutions
               that elevate your business to the next level.
             </p>
 
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row w-full max-w-md mb-4">
+            <form
+              onSubmit={handleSubscribe}
+              className="flex flex-col sm:flex-row w-full max-w-md mb-4"
+            >
               <input
                 type="email"
                 placeholder="Email address"
@@ -119,49 +125,54 @@ const Footer = () => {
             </form>
 
             {subStatus.message && (
-              <p className={`text-xs h-4 ${subStatus.error ? "text-red-400" : "text-green-400"}`}>
+              <p
+                className={`text-xs h-4 ${
+                  subStatus.error ? "text-red-400" : "text-green-400"
+                }`}
+              >
                 {subStatus.message}
               </p>
             )}
 
             {/* Social Icons */}
             <div className="flex justify-center lg:justify-start mt-6 gap-4">
-  <a
-    href="https://www.instagram.com/integralx.tech/"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Instagram"
-    className="bg-gray-800 rounded-full p-3 flex items-center justify-center"
-  >
-    <FaInstagram className="text-yellow-400" size={22} />
-  </a>
-  <a
-    href="https://www.facebook.com/people/IntegralXtech/61566634859509/"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Facebook"
-    className="bg-gray-800 rounded-full p-3 flex items-center justify-center"
-  >
-    <FaFacebookF className="text-yellow-400" size={22} />
-  </a>
-  <a
-    href="https://www.linkedin.com/company/integralx/"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="LinkedIn"
-    className="bg-gray-800 rounded-full p-3 flex items-center justify-center"
-  >
-    <FaLinkedin className="text-yellow-400" size={22} />
-  </a>
-</div>
-
+              <a
+                href="https://www.instagram.com/integralx.tech/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className={circleClasses}
+              >
+                <FaInstagram className="text-yellow-400" size={22} />
+              </a>
+              <a
+                href="https://www.facebook.com/people/IntegralXtech/61566634859509/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className={circleClasses}
+              >
+                <FaFacebookF className="text-yellow-400" size={22} />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/integralx/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className={circleClasses}
+              >
+                <FaLinkedin className="text-yellow-400" size={22} />
+              </a>
+            </div>
           </div>
 
           {/* Right Section */}
           <div className="w-full lg:w-1/2 flex flex-col sm:flex-row justify-center items-center sm:items-start gap-12 lg:gap-12 text-center sm:text-left">
             {/* Quick Links */}
             <div className="flex-1">
-              <h4 className="text-white font-semibold mb-8 text-[18px]">Quick Links</h4>
+              <h4 className="text-white font-semibold mb-8 text-[18px]">
+                Quick Links
+              </h4>
               <ul className="space-y-2">
                 {quickLinksConfig.map((linkItem) => (
                   <li key={linkItem.text}>
@@ -179,48 +190,49 @@ const Footer = () => {
 
             {/* Contact Us */}
             <div className="flex-1">
-  <h4 className="text-white font-semibold mb-8 text-[18px]">Contact Us</h4>
-  <div className="space-y-6">
-    {/* Phone Section */}
-    <div className="flex items-center gap-3 justify-center sm:justify-start">
-      <a
-        href="tel:+923295100167"
-        className="bg-gray-800 rounded-full p-3 flex items-center justify-center"
-      >
-        <FaPhoneAlt className="text-yellow-400" size={22} />
-      </a>
-      <div>
-        <p className="text-[16px] text-white font-medium">Phone</p>
-        <a
-          href="tel:+923295100167"
-          className="text-[14px] text-[#A4A4A4] hover:text-white transition duration-300"
-        >
-          +92-329-5100167
-        </a>
-      </div>
-    </div>
+              <h4 className="text-white font-semibold mb-8 text-[18px]">
+                Contact Us
+              </h4>
+              <div className="space-y-6">
+                {/* Phone Section */}
+                <div className="flex items-center gap-3 justify-center sm:justify-start">
+                  <a
+                    href="tel:+923295100167"
+                    className={circleClasses}
+                  >
+                    <FaPhoneAlt className="text-yellow-400" size={22} />
+                  </a>
+                  <div>
+                    <p className="text-[16px] text-white font-medium">Phone</p>
+                    <a
+                      href="tel:+923295100167"
+                      className="text-[14px] text-[#A4A4A4] hover:text-white transition duration-300"
+                    >
+                      +92-329-5100167
+                    </a>
+                  </div>
+                </div>
 
-    {/* Email Section */}
-    <div className="flex items-center gap-3 justify-center sm:justify-start">
-      <a
-        href="mailto:integralx.tech@gmail.com"
-        className="bg-gray-800 rounded-full p-3 flex items-center justify-center"
-      >
-        <FaEnvelope className="text-yellow-400" size={22} />
-      </a>
-      <div>
-        <p className="text-[16px] text-white font-medium">Email</p>
-        <a
-          href="mailto:integralx.tech@gmail.com"
-          className="text-[14px] text-[#A4A4A4] hover:text-white transition duration-300"
-        >
-          integralx.tech@gmail.com
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
+                {/* Email Section */}
+                <div className="flex items-center gap-3 justify-center sm:justify-start">
+                  <a
+                    href="mailto:integralx.tech@gmail.com"
+                    className={circleClasses}
+                  >
+                    <FaEnvelope className="text-yellow-400" size={22} />
+                  </a>
+                  <div>
+                    <p className="text-[16px] text-white font-medium">Email</p>
+                    <a
+                      href="mailto:integralx.tech@gmail.com"
+                      className="text-[14px] text-[#A4A4A4] hover:text-white transition duration-300"
+                    >
+                      integralx.tech@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

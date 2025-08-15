@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projectData } from "../../data/projectData";
+import { MdOpenInNew } from "react-icons/md";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -64,27 +65,13 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
               </div>
 
               <div className="absolute bottom-4 right-4">
-                <button
-                  className="
-                    relative z-10
-                    px-4 py-2.5
-                    text-[15px] font-bold text-white
-                    rounded-[6px]
-                    bg-transparent
-                    transition duration-300 ease-in-out
-                    group-hover:bg-white/10
-                    group-hover:backdrop-blur-md
-                    group-hover:shadow-md
-                  "
-                  style={{
-                    borderImage: "linear-gradient(90deg, #F9D923, #C3367C) 1",
-                    borderStyle: "solid",
-                    borderRadius: "6px",
-                  }}
-                >
-                  See More →
-                </button>
-              </div>
+  <Link to={detailUrl}>
+    <MdOpenInNew
+      size={30}
+      className="text-white cursor-pointer transition-colors duration-300 group-hover:text-brand-yellow"
+    />
+  </Link>
+</div>
             </div>
           </div>
         </div>
