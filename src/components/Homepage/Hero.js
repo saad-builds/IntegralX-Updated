@@ -90,11 +90,12 @@ const Hero = () => {
 
           <motion.div variants={item}>
             <button
-              className="rounded-md bg-gradient-to-r from-brand-yellow to-brand-pink px-10 py-4 font-semibold text-white transition duration-300 ease-in-out hover:opacity-90 hover:scale-105 drop-shadow-lg"
-              onClick={() => handleButtonClick(slide.buttonText)}
-            >
-              {slide.buttonText}
-            </button>
+  className="rounded-md bg-gradient-to-r from-brand-yellow to-brand-pink px-10 py-4 font-semibold text-white transition duration-300 ease-in-out hover:opacity-90 drop-shadow-lg"
+  onClick={() => handleButtonClick(slide.buttonText)}
+>
+  {slide.buttonText}
+</button>
+
           </motion.div>
         </motion.div>
       </div>

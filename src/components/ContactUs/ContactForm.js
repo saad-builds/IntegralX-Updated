@@ -345,7 +345,7 @@ const handleMeetingDateChange = (event) => {
           <div className="text-left">
             <button
               type="submit"
-              className="px-12 py-4 self-center md:self-start rounded-lg font-semibold text-sm md:text-base text-white bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-yellow-300 hover:to-pink-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-yellow-400 transition duration-300 ease-in-out shadow-md hover:shadow-lg lg:mt-4 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="px-12 py-4 self-center md:self-start rounded-lg font-semibold text-sm md:text-base text-white bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-yellow-300 hover:to-pink-400 focus:outline-none focus:ring-offset-gray-900 transition duration-300 ease-in-out shadow-md hover:shadow-lg lg:mt-4 disabled:opacity-60 disabled:cursor-not-allowed"
               disabled={isSubmitting} 
             >
               {isSubmitting ? 'Sending...' : 'Submit'}

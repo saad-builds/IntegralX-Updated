@@ -34,6 +34,7 @@ const Header = () => {
           onClick={() => isMobileMenuOpen && toggleMobileMenu()}
         >
           <img
+            onClick={(e) => handleNavClick(e, "/#hero")}
             className="h-[100px] w-[100px]"
             src={logoUrl}
             alt="IntegralX Logo"
@@ -43,7 +44,7 @@ const Header = () => {
           <Link
             to="/"
             
-            onClick={(e) => handleNavClick(e, "/")}
+            onClick={(e) => handleNavClick(e, "/#hero")}
             className={`text-[16px] text-gray-200 underline decoration-transparent hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold ${
               location.pathname === "/"
                 ? "decoration-brand-yellow decoration-2"
@@ -156,6 +157,13 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-4 sm:px-3 flex flex-col items-center bg-gray-800 bg-opacity-95 shadow-lg">
+            <Link
+              to="/"
+              onClick={(e) => handleNavClick(e, "/#hero")}
+              className="block px-3 py-2 rounded-md text-base font-bold text-gray-200 hover:text-brand-yellow hover:bg-gray-700"
+            >
+              Home
+            </Link>
             <Link
               to="/#services"
               onClick={(e) => handleNavClick(e, "/#services")}

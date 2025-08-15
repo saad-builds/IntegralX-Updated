@@ -2,27 +2,29 @@ import React from "react";
 import ServiceCard from "./ServiceCard";
 import { motion } from "framer-motion";
 import {
-  FiCloud,
-  FiCode,
   FiGlobe,
-  FiSmartphone,
   FiLock,
   FiLayers,
 } from "react-icons/fi";
-import { RiRobotLine } from "react-icons/ri";
+import { MdCloudQueue } from "react-icons/md";
+import { IoCodeSlash } from "react-icons/io5";
+import { LuBrainCircuit } from "react-icons/lu";
+import { FaMobileAlt } from "react-icons/fa";
+import { SiBlockchaindotcom } from "react-icons/si";
+
 
 const servicesData = [
   {
     title: "Cloud Solutions",
     description:
       "Scalable and secure cloud-based services for storage, computing, and infrastructure to keep your business flexible and connected.",
-    icon: FiCloud,
+    icon: MdCloudQueue ,
   },
   {
     title: "Custom Software Development",
     description:
       "Your business has specific needs, we build custom solutions designed to match your unique goals and workflows.",
-    icon: FiCode,
+    icon: IoCodeSlash ,
   },
   {
     title: "Web Development",
@@ -34,13 +36,13 @@ const servicesData = [
     title: "AI Models & Automation",
     description:
       "Stop doing manual work, Let AI handle the rest. We build smart, efficient solutions to streamline your processes and boost productivity.",
-    icon: RiRobotLine,
+    icon: LuBrainCircuit,
   },
   {
     title: "Mobile App Development",
     description:
       "Put your brand in every customer's pocket with sleek, user-friendly apps that deliver performance and engagement on the go.",
-    icon: FiSmartphone,
+    icon: FaMobileAlt,
   },
   {
     title: "Blockchain",
