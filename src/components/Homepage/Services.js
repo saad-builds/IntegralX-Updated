@@ -1,53 +1,58 @@
 import React from "react";
 import ServiceCard from "./ServiceCard";
 import { motion } from "framer-motion";
+import {
+  FiCloud,
+  FiCode,
+  FiGlobe,
+  FiSmartphone,
+  FiLock,
+  FiLayers,
+} from "react-icons/fi";
+import { RiRobotLine } from "react-icons/ri";
 
 const servicesData = [
   {
-    id: "cloud",
     title: "Cloud Solutions",
     description:
-      "Providing scalable and secure cloud-based services for storage and computing.",
-    imageUrl: "/service-cloud.png",
+      "Scalable and secure cloud-based services for storage, computing, and infrastructure to keep your business flexible and connected.",
+    icon: FiCloud,
   },
   {
-    id: "custom",
-    title: "Custom Software development",
+    title: "Custom Software Development",
     description:
-      "Your Business Has Specific Needs, We Build Specific Solutions.",
-    imageUrl: "/service-custom.png",
+      "Your business has specific needs, we build custom solutions designed to match your unique goals and workflows.",
+    icon: FiCode,
   },
   {
-    id: "web",
     title: "Web Development",
-    description: "If Google Can’t Find You, Neither Can Your Customers.",
-    imageUrl: "/service-web.png",
+    description:
+      "If Google can't find you, neither can your customers. We build fast, responsive, and SEO-friendly websites that make an impact.",
+    icon: FiGlobe,
   },
   {
-    id: "ai",
-    title: "AI Models Development and Automation",
-    description: "Stop Doing Manual Work, Your Smart AI Workforce Is Ready.",
-    imageUrl: "/service-ai.png",
+    title: "AI Models & Automation",
+    description:
+      "Stop doing manual work, Let AI handle the rest. We build smart, efficient solutions to streamline your processes and boost productivity.",
+    icon: RiRobotLine,
   },
   {
-    id: "mobile",
     title: "Mobile App Development",
-    description: "Your Brand in Every Customer's Pocket.",
-    imageUrl: "/service-mobile.png",
+    description:
+      "Put your brand in every customer's pocket with sleek, user-friendly apps that deliver performance and engagement on the go.",
+    icon: FiSmartphone,
   },
   {
-    id: "blockchain",
     title: "Blockchain",
     description:
-      "Developing forward-thinking blockchain solutions for enhanced security and transparency.",
-    imageUrl: "/service-blockchain.png",
+      "Forward-thinking blockchain solutions that offer better security, transparency, and decentralized control for your business.",
+    icon: FiLock,
   },
   {
-    id: "saas",
     title: "SaaS",
     description:
-      "Delivering software applications over the cloud with maximum accessibility.",
-    imageUrl: "/service-saas.png",
+      "We create powerful SaaS products that are cloud-based, user-friendly, and built for accessibility and scale.",
+    icon: FiLayers,
   },
 ];
 
@@ -84,26 +89,31 @@ const Services = () => {
       </motion.div>
 
       <div className="w-full h-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
-          {servicesData.map((service) => (
-            <motion.div
-              key={service.id}
-              className="flex items-center justify-center"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <div className="relative w-[300px] h-[300px] rounded-[14px]">
-                <ServiceCard
-                  title={service.title}
-                  description={service.description}
-                  imageUrl={service.imageUrl}
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
+  {servicesData.map((service, index) => (
+    <motion.div
+      key={index}
+      className={`flex items-center justify-center ${
+        index === servicesData.length - 1 && servicesData.length % 3 !== 0
+          ? "lg:col-span-3" // Center last card if it's alone
+          : ""
+      }`}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className="relative w-[300px] h-[300px] rounded-[14px]">
+        <ServiceCard
+          title={service.title}
+          description={service.description}
+          icon={service.icon}
+        />
+      </div>
+    </motion.div>
+  ))}
+</div>
+
       </div>
     </section>
   );
