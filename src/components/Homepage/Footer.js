@@ -237,9 +237,10 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <hr className="border-t border-gray-700 my-8" />
-        <div className="text-[14px] text-[#B6BDB9]">
-          © {new Date().getFullYear()}. All rights reserved.
-        </div>
+        <div className="text-[14px] text-[#B6BDB9] text-center">
+  © {new Date().getFullYear()}. All rights reserved.
+</div>
+
       </footer>
 
       {/* WhatsApp Floating Button */}
