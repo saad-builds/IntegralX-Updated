@@ -78,9 +78,8 @@ const Footer = () => {
     }
   };
 
-  // Reusable classes for icon circles: keep border same, darken bg on hover, icon color unchanged
   const circleClasses =
-    "bg-gray-800 border-[2px] border-gray-800 rounded-full p-3 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900";
+    "bg-gray-800 border border-gray-800 rounded-full p-3 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900";
 
   return (
     <>
@@ -88,7 +87,7 @@ const Footer = () => {
       <footer className="bg-black text-gray-300 pt-12 pb-8 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-8">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col items-center lg:items-start">
+          <div className="w-full lg:w-1/2 flex flex-col items-start">
             <div className="flex items-center gap-3 mb-5">
               <h2 className="text-4xl md:text-6xl font-semibold text-white leading-tight">
                 Let's
@@ -135,7 +134,7 @@ const Footer = () => {
             )}
 
             {/* Social Icons */}
-            <div className="flex justify-center lg:justify-start mt-6 gap-4">
+            <div className="flex justify-start mt-6 gap-4">
               <a
                 href="https://www.instagram.com/integralx.tech/"
                 target="_blank"
@@ -167,7 +166,7 @@ const Footer = () => {
           </div>
 
           {/* Right Section */}
-          <div className="w-full lg:w-1/2 flex flex-col sm:flex-row justify-center items-center sm:items-start gap-12 lg:gap-12 text-center sm:text-left">
+          <div className="w-full lg:w-1/2 flex flex-col sm:flex-row items-start gap-12 lg:gap-12">
             {/* Quick Links */}
             <div className="flex-1">
               <h4 className="text-white font-semibold mb-8 text-[18px]">
@@ -195,7 +194,7 @@ const Footer = () => {
               </h4>
               <div className="space-y-6">
                 {/* Phone Section */}
-                <div className="flex items-center gap-3 justify-center sm:justify-start">
+                <div className="flex items-center gap-3">
                   <a
                     href="tel:+923295100167"
                     className={circleClasses}
@@ -214,7 +213,7 @@ const Footer = () => {
                 </div>
 
                 {/* Email Section */}
-                <div className="flex items-center gap-3 justify-center sm:justify-start">
+                <div className="flex items-center gap-3">
                   <a
                     href="mailto:integralx.tech@gmail.com"
                     className={circleClasses}
@@ -238,7 +237,7 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <hr className="border-t border-gray-700 my-8" />
-        <div className="text-center text-[14px] text-[#B6BDB9]">
+        <div className="text-[14px] text-[#B6BDB9]">
           © {new Date().getFullYear()}. All rights reserved.
         </div>
       </footer>
