@@ -79,7 +79,7 @@ const Footer = () => {
   };
 
   const circleClasses =
-    "bg-gray-800 border border-gray-800 rounded-full p-3 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900";
+    "bg-gray-800 border-[2px] border-gray-800 rounded-full p-3 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900";
 
   return (
     <>
