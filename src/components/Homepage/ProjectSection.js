@@ -65,13 +65,13 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
               </div>
 
               <div className="absolute bottom-4 right-4">
-  <Link to={detailUrl}>
-    <MdOpenInNew
-      size={30}
-      className="text-white cursor-pointer transition-colors duration-300 group-hover:text-brand-yellow"
-    />
-  </Link>
-</div>
+                <Link to={detailUrl}>
+                  <MdOpenInNew
+                    size={30}
+                    className="text-white cursor-pointer transition-colors duration-300 group-hover:text-brand-yellow"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -87,16 +87,17 @@ const ProjectSection = () => {
   const featuredProjects = projectData.slice(0, 6); // First 6 projects
 
   return (
-    <section className="bg-gradient-to-l from-[#1B2435] to-black text-gray-300 py-16">
+    <section className="bg-gradient-to-l from-[#1B2435] to-black text-gray-300 ">
       <div className="text-center px-4 md:px-8 max-w-4xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-white flex justify-center items-center mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-white flex justify-center items-center mb-8">
           <span className="mr-3 h-10 w-1.5 bg-brand-yellow"></span>
           OUR PROJECTS{" "}
         </h2>
-        <p className="text-base md:text-lg text-gray-200">
-          Featured insights stories of our transformations across services and
-          industries. From concept to completion, stories of our transformations
-          across services.
+        <p className="text-base md:text-lg text-gray-200 mb-16">
+          Our projects aren't just about great code, they're about solving the
+          real challenges you face. Every solution is thoughtfully crafted to
+          match your unique workflows, users,
+          <br /> and long-term goals.
         </p>
       </div>
 

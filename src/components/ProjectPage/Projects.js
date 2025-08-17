@@ -6,7 +6,6 @@ import Header from "../Homepage/Header";
 import Footer from "../Homepage/Footer";
 import { MdOpenInNew } from "react-icons/md";
 
-
 // Animation for each image card with stagger & scale on scroll
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -81,14 +80,14 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
                 </p>
               </div>
 
-         <div className="absolute bottom-4 right-4">
-  <Link to={detailUrl}>
-  <MdOpenInNew 
-      size={36}
-      className="text-white cursor-pointer transition-colors duration-300 group-hover:text-brand-yellow"
-    />
-  </Link>
-</div>
+              <div className="absolute bottom-4 right-4">
+                <Link to={detailUrl}>
+                  <MdOpenInNew
+                    size={36}
+                    className="text-white cursor-pointer transition-colors duration-300 group-hover:text-brand-yellow"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

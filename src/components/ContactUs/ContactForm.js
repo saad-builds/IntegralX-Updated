@@ -1,41 +1,44 @@
-import React, { useState } from 'react';
-import { submitContactForm } from '../../services/api';
-import { DateTime } from 'luxon';
-const bannerImageUrl = '/contact_img.svg';
+import React, { useState } from "react";
+import { submitContactForm } from "../../services/api";
+import { DateTime } from "luxon";
+const bannerImageUrl = "/contact_img.svg";
 
 function ContactSection() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [meetingDate, setMeetingDate] = useState('');
-  const [meetingDateInput, setMeetingDateInput] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [meetingDate, setMeetingDate] = useState("");
+  const [meetingDateInput, setMeetingDateInput] = useState("");
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [zone,setZone]=useState('');
-  const [submitStatus, setSubmitStatus] = useState({ message: '', error: false });
-  const [formErrors, setFormErrors] = useState({ 
-    name: '',
-    email: '',
-    phone: '',
-    meetingDate: '',
-    message: '',
-    general: '',
-    zone:''
+  const [zone, setZone] = useState("");
+  const [submitStatus, setSubmitStatus] = useState({
+    message: "",
+    error: false,
+  });
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    meetingDate: "",
+    message: "",
+    general: "",
+    zone: "",
   });
 
   const validateName = (value) => {
     if (/[0-9]/.test(value)) {
-      return 'Name cannot contain numbers.';
+      return "Name cannot contain numbers.";
     }
-    return '';
+    return "";
   };
 
   const validatePhoneCharacters = (value) => {
     if (value && !/^\+?\d*$/.test(value)) {
       return 'Phone number can only contain digits and an optional leading "+".';
     }
-    return '';
+    return "";
   };
 
   const handleNameChange = (event) => {
@@ -52,44 +55,52 @@ function ContactSection() {
     setPhone(value);
   };
 
-const handleMeetingDateChange = (event) => {
-  const localValue = event.target.value; // "2025-06-26T14:30"
-  setMeetingDateInput(localValue); // for input display
+  const handleMeetingDateChange = (event) => {
+    const localValue = event.target.value; // "2025-06-26T14:30"
+    setMeetingDateInput(localValue); // for input display
 
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  const zonedDateTime = DateTime.fromFormat(localValue, "yyyy-MM-dd'T'HH:mm", { zone: 'local' });
+    const zonedDateTime = DateTime.fromFormat(
+      localValue,
+      "yyyy-MM-dd'T'HH:mm",
+      { zone: "local" }
+    );
 
-  const adjustedToZone = zonedDateTime.setZone(timeZone);
+    const adjustedToZone = zonedDateTime.setZone(timeZone);
 
-  console.log("User Time Zone:", timeZone);
-  console.log("Formatted Time with Zone:", adjustedToZone.toISO());
+    console.log("User Time Zone:", timeZone);
+    console.log("Formatted Time with Zone:", adjustedToZone.toISO());
 
-  // Save the full ISO version for backend
-  setMeetingDate(adjustedToZone.toISO());
-  setZone(timeZone);
-
-};
+    // Save the full ISO version for backend
+    setMeetingDate(adjustedToZone.toISO());
+    setZone(timeZone);
+  };
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ message: '', error: false }); 
+    setSubmitStatus({ message: "", error: false });
 
     const newFormErrors = {
-        name: '', email: '', phone: '', meetingDate: '', message: '', general: '', zone: ''
+      name: "",
+      email: "",
+      phone: "",
+      meetingDate: "",
+      message: "",
+      general: "",
+      zone: "",
     };
     let hasError = false;
     const missingFieldsList = [];
 
     if (!name.trim()) {
-      newFormErrors.name = 'Name is required.';
-      missingFieldsList.push('Name');
+      newFormErrors.name = "Name is required.";
+      missingFieldsList.push("Name");
       hasError = true;
     } else {
       const nameValidationError = validateName(name);
@@ -100,11 +111,11 @@ const handleMeetingDateChange = (event) => {
     }
 
     if (!email.trim()) {
-      newFormErrors.email = 'Email is required.';
-      missingFieldsList.push('Email');
+      newFormErrors.email = "Email is required.";
+      missingFieldsList.push("Email");
       hasError = true;
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newFormErrors.email = 'Please enter a valid email address.';
+      newFormErrors.email = "Please enter a valid email address.";
       hasError = true;
     }
     if (!phone.trim()) {
@@ -166,31 +177,44 @@ const handleMeetingDateChange = (event) => {
       setIsSubmitting(false);
       return;
     }
-    setFormErrors({ name: '', email: '', phone: '', meetingDate: '', message: '', general: '',zone: '' });
+    setFormErrors({
+      name: "",
+      email: "",
+      phone: "",
+      meetingDate: "",
+      message: "",
+      general: "",
+      zone: "",
+    });
 
     const formData = {
       name,
       email,
       phone,
-      meetingDate, 
+      meetingDate,
       message,
-      zone
+      zone,
     };
 
     try {
       const response = await submitContactForm(formData);
-      setSubmitStatus({ message: response.message || 'Message sent successfully!', error: false });
-      setName('');
-      setEmail('');
-      setPhone('');
-      setMeetingDate('');
-      setMessage('');
-      setZone('')
-      setTimeout(() => setSubmitStatus({ message: '', error: false }), 5000);
+      setSubmitStatus({
+        message: response.message || "Message sent successfully!",
+        error: false,
+      });
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMeetingDate("");
+      setMessage("");
+      setZone("");
+      setTimeout(() => setSubmitStatus({ message: "", error: false }), 5000);
     } catch (err) {
       setSubmitStatus({
-        message: err.response?.data?.error || 'Failed to send message. Please try again.',
-        error: true
+        message:
+          err.response?.data?.error ||
+          "Failed to send message. Please try again.",
+        error: true,
       });
     } finally {
       setIsSubmitting(false);
@@ -198,20 +222,16 @@ const handleMeetingDateChange = (event) => {
   };
 
   const getLocalDateTimeMin = () => {
-  const now = new Date();
-  now.setDate(now.getDate() + 1); // move to tomorrow
-  now.setHours(0, 0, 0, 0);       // set time to start of the day
-  const year = now.getFullYear();
-  const month = (now.getMonth() + 1).toString().padStart(2, '0'); 
-  const day = now.getDate().toString().padStart(2, '0');
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
-  return `${year}-${month}-${day}T${hours}:${minutes}`;
-};
-
-
-
-
+    const now = new Date();
+    now.setDate(now.getDate() + 1); // move to tomorrow
+    now.setHours(0, 0, 0, 0); // set time to start of the day
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, "0");
+    const day = now.getDate().toString().padStart(2, "0");
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  };
 
   return (
     <section className="bg-black font-sans">
@@ -221,21 +241,14 @@ const handleMeetingDateChange = (event) => {
         aria-labelledby="get-in-touch-heading"
       >
         <div className="absolute inset-0 bg-black opacity-60"></div>
-        {/* <div className="relative z-10 h-full flex flex-col justify-center items-center text-center max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 id="get-in-touch-heading" className="text-4xl md:text-[42px] font-semibold text-white mb-4">
-            Get in touch
-          </h1>
-          <p className="text-lg md:text-[22px] text-gray-200">
-            IntegralX is ready to provide the right solutions according to your need
-          </p>
-        </div> */}
         <div className="relative z-10 flex h-full w-full items-center justify-center">
           <div className="w-full max-w-6xl px-4 text-white sm:px-8 md:px-12 lg:px-16 text-center">
             <h1 className="mb-4 text-4xl font-bold leading-tight sm:text-4xl md:text-[42px] lg:text-[42px]">
               Get in Touch
             </h1>
             <p className="mb-8 max-w-4xl text-base text-gray-200 sm:text-lg md:text-[22px] mx-auto lg:max-w-xl">
-              IntegralX is ready to provide the right solutions according to your need
+              IntegralX is ready to provide the right solutions according to
+              your need
             </p>
           </div>
         </div>
@@ -249,7 +262,10 @@ const handleMeetingDateChange = (event) => {
         <form onSubmit={handleSubmit} noValidate>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 mb-6">
             <div>
-              <label htmlFor="name" className="block text-[16px] font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="name"
+                className="block text-[16px] font-medium text-gray-300 mb-2"
+              >
                 Name <span className="text-red-400">*</span>
               </label>
               <input
@@ -258,17 +274,28 @@ const handleMeetingDateChange = (event) => {
                 id="name"
                 autoComplete="name"
                 placeholder="Your Name"
-                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${formErrors.name ? 'border-red-500' : 'border-transparent'}`}
+                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${
+                  formErrors.name
+                    ? "border-red-500 border-[2px]"
+                    : "border-transparent"
+                }`}
                 value={name}
                 onChange={handleNameChange}
                 disabled={isSubmitting}
                 aria-describedby={formErrors.name ? "name-error" : undefined}
                 aria-required="true"
               />
-              {formErrors.name && <p id="name-error" className="text-red-400 text-xs mt-1">{formErrors.name}</p>}
+              {formErrors.name && (
+                <p id="name-error" className="text-red-400 text-xs mt-1">
+                  {formErrors.name}
+                </p>
+              )}
             </div>
             <div>
-              <label htmlFor="email" className="block text-[16px] font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-[16px] font-medium text-gray-300 mb-2"
+              >
                 Email <span className="text-red-400">*</span>
               </label>
               <input
@@ -277,17 +304,28 @@ const handleMeetingDateChange = (event) => {
                 id="email"
                 autoComplete="email"
                 placeholder="Email Address"
-                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${formErrors.email ? 'border-red-500' : 'border-transparent'}`}
+                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${
+                  formErrors.email
+                    ? "border-red-500 border-[2px]"
+                    : "border-transparent"
+                }`}
                 value={email}
                 onChange={handleEmailChange}
                 disabled={isSubmitting}
                 aria-describedby={formErrors.email ? "email-error" : undefined}
                 aria-required="true"
               />
-              {formErrors.email && <p id="email-error" className="text-red-400 text-xs mt-1">{formErrors.email}</p>}
+              {formErrors.email && (
+                <p id="email-error" className="text-red-400 text-xs mt-1">
+                  {formErrors.email}
+                </p>
+              )}
             </div>
             <div>
-              <label htmlFor="phone-number" className="block text-[16px] font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="phone-number"
+                className="block text-[16px] font-medium text-gray-300 mb-2"
+              >
                 Phone number <span className="text-red-400">*</span>
               </label>
               <input
@@ -296,36 +334,61 @@ const handleMeetingDateChange = (event) => {
                 id="phone-number"
                 autoComplete="tel"
                 placeholder="+92 300 1234567"
-                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${formErrors.phone ? 'border-red-500' : 'border-transparent'}`}
+                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${
+                  formErrors.phone
+                    ? "border-red-500 border-[2px]"
+                    : "border-transparent"
+                }`}
                 value={phone}
                 onChange={handlePhoneChange}
                 disabled={isSubmitting}
                 aria-describedby={formErrors.phone ? "phone-error" : undefined}
                 aria-required="true"
               />
-              {formErrors.phone && <p id="phone-error" className="text-red-400 text-xs mt-1">{formErrors.phone}</p>}
+              {formErrors.phone && (
+                <p id="phone-error" className="text-red-400 text-xs mt-1">
+                  {formErrors.phone}
+                </p>
+              )}
             </div>
             <div>
-              <label htmlFor="schedule-datetime" className="block text-[16px] font-medium text-gray-300 mb-2">
-                Schedule a meeting (Date & Time) <span className="text-red-400">*</span>
+              <label
+                htmlFor="schedule-datetime"
+                className="block text-[16px] font-medium text-gray-300 mb-2"
+              >
+                Schedule a meeting (Date & Time){" "}
+                <span className="text-red-400">*</span>
               </label>
               <input
                 type="datetime-local"
                 name="schedule-datetime"
                 id="schedule-datetime"
-                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg appearance-none disabled:opacity-70 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 ${formErrors.meetingDate ? 'border-red-500' : 'border-transparent'}`}
+                className={`block w-full px-4 py-3 bg-white text-gray-900 placeholder-gray-500 border rounded-lg appearance-none disabled:opacity-70 focus:ring-2 focus:border-yellow-400 ${
+                  formErrors.meetingDate
+                    ? "border-red-500 border-[2px]"
+                    : "border-transparent"
+                }`}
                 value={meetingDateInput}
                 onChange={handleMeetingDateChange}
                 disabled={isSubmitting}
                 min={getLocalDateTimeMin()}
-                aria-describedby={formErrors.meetingDate ? "meetingDate-error" : undefined}
+                aria-describedby={
+                  formErrors.meetingDate ? "meetingDate-error" : undefined
+                }
                 aria-required="true"
               />
-              {formErrors.meetingDate && <p id="meetingDate-error" className="text-red-400 text-xs mt-1">{formErrors.meetingDate}</p>}
+              {formErrors.meetingDate && (
+                <p id="meetingDate-error" className="text-red-400 text-xs mt-1">
+                  {formErrors.meetingDate}
+                </p>
+              )}
             </div>
           </div>
           <div className="mb-8">
-            <label htmlFor="message" className="block text-[16px] font-medium text-gray-300 mb-2">
+            <label
+              htmlFor="message"
+              className="block text-[16px] font-medium text-gray-300 mb-2"
+            >
               Project description <span className="text-red-400">*</span>
             </label>
             <textarea
@@ -333,31 +396,42 @@ const handleMeetingDateChange = (event) => {
               name="message"
               rows={5}
               placeholder="Your message..."
-              className={`block w-full px-4 py-2 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${formErrors.message ? 'border-red-500' : 'border-transparent'}`}
+              className={`block w-full px-4 py-2 bg-white text-gray-900 placeholder-gray-500 border rounded-lg disabled:opacity-70 ${
+                formErrors.message
+                  ? "border-red-500 border-[2px]"
+                  : "border-transparent"
+              }`}
               value={message}
               onChange={handleMessageChange}
               disabled={isSubmitting}
-              aria-describedby={formErrors.message ? "message-error" : undefined}
+              aria-describedby={
+                formErrors.message ? "message-error" : undefined
+              }
               aria-required="true"
             />
-            {formErrors.message && <p id="message-error" className="text-red-400 text-xs mt-1">{formErrors.message}</p>}
+            {formErrors.message && (
+              <p id="message-error" className="text-red-400 text-xs mt-1">
+                {formErrors.message}
+              </p>
+            )}
           </div>
           <div className="text-left">
             <button
               type="submit"
               className="px-12 py-4 self-center md:self-start rounded-lg font-semibold text-sm md:text-base text-white bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-yellow-300 hover:to-pink-400 focus:outline-none focus:ring-offset-gray-900 transition duration-300 ease-in-out shadow-md hover:shadow-lg lg:mt-4 disabled:opacity-60 disabled:cursor-not-allowed"
-              disabled={isSubmitting} 
+              disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : 'Submit'}
-
+              {isSubmitting ? "Sending..." : "Submit"}
             </button>
             {formErrors.general && !submitStatus.message && (
-              <p className="text-red-400 text-sm mt-4">
-                {formErrors.general}
-              </p>
+              <p className="text-red-400 text-sm mt-4">{formErrors.general}</p>
             )}
             {submitStatus.message && (
-              <p className={`text-sm mt-4 ${submitStatus.error ? 'text-red-400' : 'text-green-400'}`}>
+              <p
+                className={`text-sm mt-4 ${
+                  submitStatus.error ? "text-red-400" : "text-green-400"
+                }`}
+              >
                 {submitStatus.message}
               </p>
             )}

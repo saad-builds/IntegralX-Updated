@@ -1,19 +1,19 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const slideData = [
   {
     id: 1,
-    backgroundImageUrl: '/web-texture.jpeg', // your background image
+    backgroundImageUrl: "/web-texture.jpeg", // your background image
     heading: (
       <>
         One-Stop for All <br /> Your <br /> Tech Solutions.
       </>
     ),
     paragraph:
-      'Innovative, scalable, and future-ready solutions designed to elevate your business in the digital era.',
-    buttonText: 'Get in Touch',
+      "Innovative, scalable, and future-ready solutions designed to elevate your business in the digital era.",
+    buttonText: "Get in Touch",
   },
 ];
 
@@ -25,8 +25,8 @@ const container = {
     y: 0,
     transition: {
       duration: 0.2,
-      ease: 'easeOut',
-      when: 'beforeChildren',
+      ease: "easeOut",
+      when: "beforeChildren",
       staggerChildren: 0.1,
     },
   },
@@ -39,7 +39,7 @@ const item = {
     y: 0,
     transition: {
       duration: 0.4,
-      ease: 'easeOut',
+      ease: "easeOut",
     },
   },
 };
@@ -49,8 +49,8 @@ const Hero = () => {
   const slide = slideData[0];
 
   const handleButtonClick = (text) => {
-    if (text === 'Get in Touch') navigate('/contact');
-    if (text === 'Explore More') navigate('/about');
+    if (text === "Get in Touch") navigate("/contact");
+    if (text === "Explore More") navigate("/about");
   };
 
   return (
@@ -59,8 +59,8 @@ const Hero = () => {
       className="relative w-full h-[80vh] lg:h-[87vh] overflow-hidden"
       style={{
         backgroundImage: `url(${slide.backgroundImageUrl})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       {/* Dark overlay for contrast */}
@@ -90,12 +90,11 @@ const Hero = () => {
 
           <motion.div variants={item}>
             <button
-  className="rounded-md bg-gradient-to-r from-brand-yellow to-brand-pink px-10 py-4 font-semibold text-white transition duration-300 ease-in-out hover:opacity-90 drop-shadow-lg"
-  onClick={() => handleButtonClick(slide.buttonText)}
->
-  {slide.buttonText}
-</button>
-
+              className="rounded-md bg-gradient-to-r from-brand-yellow to-brand-pink px-10 py-4 font-semibold text-white transition duration-300 ease-in-out hover:opacity-90 drop-shadow-lg"
+              onClick={() => handleButtonClick(slide.buttonText)}
+            >
+              {slide.buttonText}
+            </button>
           </motion.div>
         </motion.div>
       </div>

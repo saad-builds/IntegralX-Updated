@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Header from "../Homepage/Header";
 import Footer from "../Homepage/Footer";
 
-// Slower Animation Variants
+// Animation Variants
 const fadeFromLeft = {
   hidden: { opacity: 0, x: -80 },
   visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
@@ -37,14 +37,16 @@ const ProjectPage = () => {
   }
 
   return (
-    <div id="project_page" className="bg-black text-white font-sans flex flex-col min-h-screen">
+    <div
+      id="project_page"
+      className="bg-black text-white font-sans flex flex-col min-h-screen"
+    >
       <Header />
       <main className="flex-grow py-16 md:py-20 px-4 sm:px-6 lg:px-8 lg:mx-auto">
         <div className="max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
-
           {/* Text Section */}
           <motion.div
-            className="text-gray-300 order-2 md:order-1"
+            className="text-gray-300 order-2 md:order-1 text-center md:text-left flex flex-col items-center md:items-start"
             variants={fadeFromLeft}
             initial="hidden"
             animate="visible"
@@ -60,33 +62,37 @@ const ProjectPage = () => {
             <h3 className="text-lg font-bold text-white mt-8 mb-3 lg:text-2xl">
               Description:
             </h3>
-            <p className="text-lg leading-relaxed font-normal mb-8">
+            <p className="text-lg leading-relaxed font-normal mb-8 max-w-xl">
               {project.description}
             </p>
 
-            {/* Key Features with yellow line */}
+            {/* Key Features */}
             <div className="flex items-center mb-3 mt-8">
               <span className="mr-3 h-8 w-1.5 bg-yellow-400"></span>
               <h3 className="text-lg font-bold text-white lg:text-2xl">
                 Key Features:
               </h3>
             </div>
-            <ul className="list-disc list-inside space-y-2 mb-14">
+            <ul className="list-disc list-inside space-y-2 mb-14 text-left">
               {project.keyFeatures.map((feature, index) => (
                 <li key={index}>{feature}</li>
               ))}
             </ul>
 
-            {/* Project link button */}
+            {/* Project Link Button */}
             {project.projectLink && project.projectLink !== "#" && (
               <motion.a
                 href={project.projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-12 py-4 self-center md:self-start rounded-lg font-semibold text-sm md:text-base text-white bg-gradient-to-r from-yellow-400 to-pink-400 hover:from-yellow-500 hover:to-pink-500 transition duration-150 ease-in-out shadow-md active:scale-95 active:shadow-inner lg:mt-4"
+                className="px-12 py-4 rounded-lg font-semibold text-sm md:text-base text-white bg-gradient-to-r from-yellow-400 to-pink-400 hover:from-yellow-500 hover:to-pink-500 transition duration-150 ease-in-out shadow-md active:scale-95 active:shadow-inner lg:mt-4"
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { duration: 1, delay: 0.3 } }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, delay: 0.3 },
+                }}
               >
                 View Project
               </motion.a>
@@ -95,7 +101,7 @@ const ProjectPage = () => {
 
           {/* Image Section */}
           <motion.div
-            className="flex justify-center items-center order-1 md:order-2"
+            className="flex justify-center items-center order-1 md:order-2 w-full"
             variants={fadeFromRight}
             initial="hidden"
             animate="visible"

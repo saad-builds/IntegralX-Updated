@@ -10,7 +10,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { addSubscription } from "../../services/api";
 import { smoothScrollToIdWithOffset } from "../../utils/scrollUtils";
-import { HashLink } from 'react-router-hash-link';
+import { HashLink } from "react-router-hash-link";
 
 const Footer = () => {
   const quickLinksConfig = [
@@ -82,17 +82,17 @@ const Footer = () => {
   const circleClasses =
     "bg-gray-800 border-[2px] border-gray-800 rounded-full p-3 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900";
 
-      const handleNavClick = (event, pathWithHash) => {
-        if (isMobileMenuOpen) {
-          toggleMobileMenu();
-        }
-        if (location.pathname === "/" && pathWithHash.startsWith("/#")) {
-          event.preventDefault();
-          const targetId = pathWithHash.substring(2);
-          smoothScrollToIdWithOffset(targetId, "main-header", 0);
-        }
-      };
-        const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const handleNavClick = (event, pathWithHash) => {
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+    if (location.pathname === "/" && pathWithHash.startsWith("/#")) {
+      event.preventDefault();
+      const targetId = pathWithHash.substring(2);
+      smoothScrollToIdWithOffset(targetId, "main-header", 0);
+    }
+  };
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -212,10 +212,7 @@ const Footer = () => {
               <div className="space-y-6">
                 {/* Phone Section */}
                 <div className="flex items-center gap-3">
-                  <a
-                    href="tel:+923295100167"
-                    className={circleClasses}
-                  >
+                  <a href="tel:+923295100167" className={circleClasses}>
                     <FaPhoneAlt className="text-yellow-400" size={22} />
                   </a>
                   <div>
@@ -254,10 +251,18 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <hr className="border-t border-gray-700 my-8" />
-       <div className="text-[14px] text-[#B6BDB9] text-center">
-  © {new Date().getFullYear()} <Link smooth to="/"   onClick={(e) => handleNavClick(e, "/#hero")} className="text-yellow-300">IntegralX</Link>, All rights reserved.
-</div>
-
+        <div className="text-[14px] text-[#B6BDB9] text-center">
+          © {new Date().getFullYear()}{" "}
+          <Link
+            smooth
+            to="/"
+            onClick={(e) => handleNavClick(e, "/#hero")}
+            className="text-yellow-300"
+          >
+            IntegralX
+          </Link>
+          , All rights reserved.
+        </div>
       </footer>
 
       {/* WhatsApp Floating Button */}

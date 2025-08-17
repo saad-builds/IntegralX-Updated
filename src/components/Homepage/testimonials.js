@@ -4,15 +4,15 @@ const testimonialsData = [
   {
     id: 1,
     quote:
-      "Hiring remotely seemed risky at first, with language and time zone barriers. But IntegralX made it completely seamless. Their communication was clear, suggestions helpful, and delivery always on time. We've built a solid, ongoing partnership.",
+      "Hiring remotely seemed risky at first, with language and time zone barriers. But IntegralX made it completely seamless. Their communication was clear, their suggestions helpful, and delivery always on time. We've built a solid, ongoing partnership.",
     name: "Walter",
-    title: "ecobook.se",
+    title: "Founder ecobook.se",
     avatarSrc: "/testimonial1.jpg",
   },
   {
     id: 2,
     quote:
-      "We needed a custom website with dashboards for both suppliers and dropshippers. IntegralX handled it professionally. They understood our needs, stayed on schedule, and exceeded our expectations. The final product was exactly what we wanted — smooth and hassle-free.",
+      "We needed a custom website with dashboards for both suppliers and dropshippers. IntegralX handled it professionally. They understood our needs, stayed on schedule, and exceeded our expectations. The final product was exactly what we wanted, smooth and hassle free.",
     name: "Muhammad Hammad",
     title: "Founder easydropship.net",
     avatarSrc: "/testimonial2.svg",
@@ -67,7 +67,6 @@ const TestimonialCard = ({ quote, name, title, avatarSrc }) => {
     </div>
   );
 };
-
 
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);

@@ -71,20 +71,20 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="bg-gradient-to-l from-[#1B2435] to-black text-gray-300 py-16"
+      className="bg-gradient-to-l from-[#1B2435] to-black text-gray-300 pt-16"
     >
       <motion.div
-        className="text-center px-4 md:px-8 max-w-4xl mx-auto mb-12"
+        className="text-center px-4 md:px-8 max-w-4xl mx-auto mb-8"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-white flex justify-center items-center mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-white flex justify-center items-center mb-8">
           <span className="mr-3 h-10 w-1.5 bg-brand-yellow"></span>
           OUR SERVICES
         </h2>
-        <p className="text-base md:text-lg text-gray-200 mb-20">
+        <p className="text-base md:text-lg text-gray-200 mb-14">
           We offer end-to-end development, design and consulting for a wide
           range of technologies and industry.
         </p>

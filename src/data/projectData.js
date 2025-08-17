@@ -19,7 +19,7 @@ export const projectData = [
     detailImageSrc: "/easy-dropship-detail.jpg",
   },
   {
-    id: 4,
+    id: 2,
     slug: "facture-sigma",
     src: "/project2.png",
     alt: "Facture Sigma interface image",
@@ -37,7 +37,7 @@ export const projectData = [
     detailImageSrc: "/facture-sigma-detail.jpg",
   },
   {
-    id: 2,
+    id: 3,
     slug: "anypaper-pro",
     src: "/project3.png",
     alt: "AnyPaper Pro interface image",
@@ -62,7 +62,7 @@ export const projectData = [
     detailImageSrc: "/anypaper-pro-detail.jpg",
   },
   {
-    id: 5,
+    id: 4,
     slug: "trendy-story",
     src: "/project4.png",
     alt: "Businessman holding digital concept",
@@ -87,7 +87,7 @@ export const projectData = [
     detailImageSrc: "/trendystory.jpg",
   },
   {
-    id: 7,
+    id: 5,
     slug: "clinic-management",
     src: "/clinic.jpg",
     alt: "clinic management system",
@@ -111,29 +111,30 @@ export const projectData = [
 
       "Printable reports and prescriptions",
     ],
-    projectLink: '',
+    projectLink: "",
     detailImageSrc: "/clinicsystem.jpg",
   },
   {
-  "id": 8,
-  "slug": "eatwise",
-  "src": "/EatWisefront.jpg",
-  "alt": "",
-  "title": "EatWise",
-  "subtitle": "Personalized Nutrition & Progress Tracking",
-  "description": "The Meal Plan Mobile App is designed for health-conscious individuals and meal prep enthusiasts, offering an elegant, user-friendly interface that simplifies tracking meals and monitoring dietary progress. It blends functionality with aesthetic precision, making healthy eating both intuitive and engaging.",
-  "keyFeatures": [
-    "Daily meal tracking with nutritional breakdowns.",
-    "Intuitive meal logging by portion and food type.",
-    "Weight loss progress visualization with goal setting.",
-    "Customizable meal recommendations.",
-    "Sleek, mobile-optimized interface."
-  ],
-  "projectLink": "",
-  "detailImageSrc": "/EatWise.jpg"
-},
-  {
     id: 6,
+    slug: "eatwise",
+    src: "/EatWisefront.jpg",
+    alt: "",
+    title: "EatWise",
+    subtitle: "Personalized Nutrition & Progress Tracking",
+    description:
+      "The Meal Plan Mobile App is designed for health-conscious individuals and meal prep enthusiasts, offering an elegant, user-friendly interface that simplifies tracking meals and monitoring dietary progress. It blends functionality with aesthetic precision, making healthy eating both intuitive and engaging.",
+    keyFeatures: [
+      "Daily meal tracking with nutritional breakdowns.",
+      "Intuitive meal logging by portion and food type.",
+      "Weight loss progress visualization with goal setting.",
+      "Customizable meal recommendations.",
+      "Sleek, mobile-optimized interface.",
+    ],
+    projectLink: "",
+    detailImageSrc: "/EatWise.jpg",
+  },
+  {
+    id: 7,
     slug: "skillforge",
     src: "/skillforge.jpg",
     alt: "User browsing courses on a mobile app",

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { smoothScrollToIdWithOffset } from "../../utils/scrollUtils";
+import { SlCalender } from "react-icons/sl";
 
 const Header = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,7 +44,6 @@ const Header = () => {
         <nav className="hidden md:flex items-center space-x-5 lg:space-x-7">
           <Link
             to="/"
-            
             onClick={(e) => handleNavClick(e, "/#hero")}
             className={`text-[16px] text-gray-200 underline decoration-transparent hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold ${
               location.pathname === "/"
@@ -93,21 +93,23 @@ const Header = () => {
           >
             <button
               className="
-        relative isolate overflow-hidden
-        block px-4 py-2.5 rounded-[6px]
-        text-[15px] font-bold text-white
-        bg-gradient-to-r from-brand-yellow to-brand-pink
-        before:content-['']
-        before:absolute before:inset-0
-        before:bg-gray-800
-        before:rounded-[6px]
-        before:-z-10
-        before:opacity-100
-        before:transition-opacity before:duration-600 before:ease-in-out
-        hover:before:opacity-0
-      "
+      relative isolate overflow-hidden
+      flex items-center gap-2
+      px-4 py-2.5 rounded-[6px]
+      text-[15px] font-bold text-white
+      bg-gradient-to-r from-brand-yellow to-brand-pink
+      before:content-['']
+      before:absolute before:inset-0
+      before:bg-gray-800
+      before:rounded-[6px]
+      before:-z-10
+      before:opacity-100
+      before:transition-opacity before:duration-600 before:ease-in-out
+      hover:before:opacity-0
+    "
             >
-              Book a Meeting
+              Book A Demo Meeting
+              <SlCalender className="text-lg" />
             </button>
           </Link>
         </nav>
@@ -186,19 +188,20 @@ const Header = () => {
               About Us
             </Link>
             {/* <Link
-              to="/blogs"
-              onClick={toggleMobileMenu}
-              className="block px-3 py-2 rounded-md text-base font-bold text-gray-200 hover:text-brand-yellow hover:bg-gray-700"
-            >
-              Blogs
-            </Link> */}
+                to="/blogs"
+                onClick={toggleMobileMenu}
+                className="block px-3 py-2 rounded-md text-base font-bold text-gray-200 hover:text-brand-yellow hover:bg-gray-700"
+              >
+                Blogs
+              </Link> */}
             <Link
               to="/contact"
               onClick={toggleMobileMenu}
-              className="block w-[200px] mt-3 mb-3 p-0.5 rounded-lg bg-gradient-to-r from-[#F9D923] to-[#C3367C] group transition duration-300 text-center"
+              className="block w-auto mt-3 mb-3 p-1 rounded-lg bg-gradient-to-r from-[#F9D923] to-[#C3367C] group transition duration-300 text-center"
             >
-              <span className="block px-3 py-2.5 rounded-[6px] text-base font-bold text-white">
-                Book a Meeting
+              <span className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-[6px] text-base font-bold text-white">
+                Book A Demo Meeting
+                <SlCalender className="text-lg" />
               </span>
             </Link>
           </div>

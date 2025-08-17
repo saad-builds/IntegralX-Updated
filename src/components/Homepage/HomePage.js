@@ -7,12 +7,13 @@ import ProjectSection from "./ProjectSection";
 import Testimonials from "./testimonials";
 import Footer from "./Footer";
 import { smoothScrollToIdWithOffset } from "../../utils/scrollUtils";
+import ConsultationOffer from "./ConsultationOffer";
 
 const HomePage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    document.title = 'IntegralX - Home';
+    document.title = "IntegralX - Home";
   }, []);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const HomePage = () => {
       <Header />
       <Hero />
       <Services />
+      {/* <ConsultationOffer /> */}
       <ProjectSection />
       <Testimonials />
       <Footer />
