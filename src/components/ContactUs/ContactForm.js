@@ -254,7 +254,7 @@ function ContactSection() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto bg-[#1f1f1f] rounded-2xl shadow-lg p-8 md:p-12 -mt-10">
+      <div className="relative z-10 max-w-6xl mx-auto bg-gradient-to-l from-[#1B2435] to-black rounded-2xl backdrop-blur-sm border border-white/10 p-8 md:p-12 -mt-10">
         <h2 className="text-[30px] font-semibold text-white text-center mb-8">
           Let's Talk Business
         </h2>
