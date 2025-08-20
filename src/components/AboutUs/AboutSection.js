@@ -75,7 +75,6 @@ function AboutSection() {
                 value for our clients.
               </p>
             </div>
-
             <div>
               <h2 className="text-2xl lg:text-2xl font-semibold mb-3 text-white">
                 Our Vision
@@ -118,7 +117,9 @@ function AboutSection() {
               transform: "translateX(-50%)",
             }}
           />
-          <style jsx>{`
+
+          {/* Media query to hide dotted line on small screens */}
+          <style>{`
             @media (max-width: 419px) {
               .process-line {
                 display: none;
@@ -165,22 +166,22 @@ function AboutSection() {
             },
           ].map((step, idx) => {
             const isEven = idx % 2 === 1;
+
             return (
               <motion.div
                 key={step.number}
-                className={`relative flex flex-col md:flex-row items-start 
-                              ${isEven ? "md:justify-end" : "md:justify-start"} 
-                              mb-12`}
+                className={`relative flex flex-col md:flex-row items-start ${
+                  isEven ? "md:justify-end" : "md:justify-start"
+                } mb-12`}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
               >
                 <div
-                  className={`w-full md:w-3/4 
-                                ${isEven ? "md:ml-auto" : "md:mr-auto"}
-                                bg-gradient-to-br from-black to-gray-800 rounded-xl p-8 
-                                shadow-[0_0_25px_rgba(245,240,10,0.55)]`}
+                  className={`w-full md:w-3/4 ${
+                    isEven ? "md:ml-auto" : "md:mr-auto"
+                  } bg-gradient-to-br from-black to-gray-800 rounded-xl p-8 shadow-[0_0_25px_rgba(245,240,10,0.55)]`}
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0">

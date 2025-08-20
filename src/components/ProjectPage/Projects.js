@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projectData } from "../../data/projectData";
@@ -16,12 +16,24 @@ const cardVariants = {
     transition: {
       duration: 0.4,
       ease: "easeOut",
-      delay: i * 0.1,
+      delay: i * 0.1, // stagger delay based on index
     },
   }),
 };
 
 const ImageItem = ({ src, alt, title, slug, index }) => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+  }, []);
+
+  useEffect(() => {
+    document.title = "IntegralX - projects";
+  }, []);
+
   if (!src || !slug) return null;
 
   const detailUrl = `/projects/${slug}`;
@@ -33,37 +45,31 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      custom={index}
+      custom={index} // pass index to variants for stagger delay
     >
       <Link to={detailUrl} className="group w-full">
         <div className="relative w-full max-w-[362px] h-[260px] sm:h-[300px] md:h-[362px] rounded-[14px] overflow-visible mx-auto">
+          {/* Gradient outline on hover */}
           <div
-            className="absolute -inset-1 rounded-[14px] opacity-0 group-hover:opacity-100 
-                     bg-gradient-to-tr from-[#C3367C] to-[#F9D923] z-0 
-                     transform scale-100 group-hover:scale-[1.03] 
-                     transition-all duration-300"
+            className="absolute -inset-1 rounded-[14px] opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-[#C3367C] to-[#F9D923] z-0 transform scale-100 group-hover:scale-[1.03] transition-all duration-300"
           ></div>
 
-          <div
-            className="relative w-full h-full rounded-[12px] overflow-hidden 
-                     bg-black shadow-lg 
-                     transform scale-100 group-hover:scale-[1.03] 
-                     transition-transform duration-300 z-10"
-          >
+          {/* Card content */}
+          <div className="relative w-full h-full rounded-[12px] overflow-hidden bg-black shadow-lg transform scale-100 group-hover:scale-[1.03] transition-transform duration-300 z-10">
             <img
               src={src}
               alt={alt}
               className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
               loading="lazy"
             />
-
+            {/* Overlay with title & button */}
             <div className="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-between">
+              {/* Title - center aligned */}
               <div className="flex-grow flex items-center justify-center">
                 <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-extrabold text-center">
                   {title}
                 </p>
               </div>
-
               <div className="absolute bottom-4 right-4">
                 <Link to={detailUrl}>
                   <MdOpenInNew
@@ -81,19 +87,7 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
 };
 
 const Projects = () => {
-  const [ready, setReady] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    document.title = "IntegralX - Projects";
-
-    const timeout = setTimeout(() => {
-      setReady(true);
-    }, 100); // Adjust delay if needed
-
-    return () => clearTimeout(timeout);
-  }, []);
 
   return (
     <div className="bg-gradient-to-l from-[#1B2435] to-black text-gray-300 min-h-screen">
@@ -112,7 +106,6 @@ const Projects = () => {
         >
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>
-
         <div className="relative z-10 text-center px-4 sm:px-8 md:px-12 lg:px-16 text-white">
           <h1 className="mb-4 text-4xl font-bold leading-tight sm:text-4xl md:text-[42px] lg:text-[42px]">
             Our Projects
@@ -138,14 +131,12 @@ const Projects = () => {
         </h1>
       </div>
 
-      {/* Project Cards (conditionally rendered) */}
-      {ready && (
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 pb-16 sm:pb-20">
-          {projectData.map((project, index) => (
-            <ImageItem key={project.id} index={index} {...project} />
-          ))}
-        </div>
-      )}
+      {/* Project Cards */}
+      <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 pb-16 sm:pb-20">
+        {projectData.map((project, index) => (
+          <ImageItem key={project.id} index={index} {...project} />
+        ))}
+      </div>
 
       <Footer />
     </div>
