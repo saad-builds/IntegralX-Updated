@@ -183,7 +183,7 @@ const Footer = () => {
           </div>
 
           {/* Right Section */}
-          <div className="w-full lg:w-1/2 flex flex-col sm:flex-row items-start gap-12 lg:gap-12">
+          <div className="w-full lg:w-1/2 flex flex-col sm:flex-row items-start gap-12 lg:gap-12 mt-4">
             {/* Quick Links */}
             <div className="flex-1">
               <h4 className="text-white font-semibold mb-8 text-[18px]">

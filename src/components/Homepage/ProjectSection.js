@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projectData } from "../../data/projectData";
 import { MdOpenInNew } from "react-icons/md";
+import { MdArrowForward  } from "react-icons/md";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -110,26 +111,26 @@ const ProjectSection = () => {
 
       {/* Show More Button */}
       <div className="flex justify-center mt-6">
-        <div className="relative group rounded-lg p-[2px] bg-gradient-to-r from-yellow-400 to-pink-500 w-fit">
-          <button
-            onClick={handleShowMore}
-            className="
-              relative z-10 
-              px-6 py-3 
-              rounded-lg 
-              font-bold 
-              text-white 
-              text-[15px] 
-              bg-gray-800 
-              transition-all duration-300 
-              group-hover:bg-gradient-to-r 
-              group-hover:from-yellow-400 
-              group-hover:to-pink-500
-            "
-          >
-            Show More
-          </button>
-        </div>
+        <div className="flex justify-center mt-6">
+  <button
+    onClick={handleShowMore}
+    className="
+      flex items-center gap-2
+      px-6 py-3 
+      rounded-lg 
+      font-bold 
+      text-white 
+      text-[15px]
+      bg-gradient-to-r from-yellow-400 to-pink-500
+      transition-all duration-300
+      hover:brightness-110
+    "
+  >
+    Show More
+    <MdArrowForward  size={20} className="text-white" />
+  </button>
+</div>
+
       </div>
     </section>
   );
