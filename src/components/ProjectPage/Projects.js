@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projectData } from "../../data/projectData";
@@ -16,24 +16,12 @@ const cardVariants = {
     transition: {
       duration: 0.4,
       ease: "easeOut",
-      delay: i * 0.1, // stagger delay based on index
+      delay: i * 0.1,
     },
   }),
 };
 
 const ImageItem = ({ src, alt, title, slug, index }) => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "auto",
-    });
-  }, []);
-
-  useEffect(() => {
-    document.title = "IntegralX - projects";
-  }, []);
-
   if (!src || !slug) return null;
 
   const detailUrl = `/projects/${slug}`;
@@ -45,11 +33,10 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      custom={index} // pass index to variants for stagger delay
+      custom={index}
     >
       <Link to={detailUrl} className="group w-full">
         <div className="relative w-full max-w-[362px] h-[260px] sm:h-[300px] md:h-[362px] rounded-[14px] overflow-visible mx-auto">
-          {/* Gradient outline on hover */}
           <div
             className="absolute -inset-1 rounded-[14px] opacity-0 group-hover:opacity-100 
                      bg-gradient-to-tr from-[#C3367C] to-[#F9D923] z-0 
@@ -57,7 +44,6 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
                      transition-all duration-300"
           ></div>
 
-          {/* Card content */}
           <div
             className="relative w-full h-full rounded-[12px] overflow-hidden 
                      bg-black shadow-lg 
@@ -71,9 +57,7 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
               loading="lazy"
             />
 
-            {/* Overlay with title & button */}
             <div className="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-between">
-              {/* Title - center aligned */}
               <div className="flex-grow flex items-center justify-center">
                 <p className="text-white text-[16px] sm:text-[18px] md:text-[20px] font-extrabold text-center">
                   {title}
@@ -97,7 +81,19 @@ const ImageItem = ({ src, alt, title, slug, index }) => {
 };
 
 const Projects = () => {
+  const [ready, setReady] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    document.title = "IntegralX - Projects";
+
+    const timeout = setTimeout(() => {
+      setReady(true);
+    }, 100); // Adjust delay if needed
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div className="bg-gradient-to-l from-[#1B2435] to-black text-gray-300 min-h-screen">
@@ -142,12 +138,14 @@ const Projects = () => {
         </h1>
       </div>
 
-      {/* Project Cards */}
-      <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 pb-16 sm:pb-20">
-        {projectData.map((project, index) => (
-          <ImageItem key={project.id} index={index} {...project} />
-        ))}
-      </div>
+      {/* Project Cards (conditionally rendered) */}
+      {ready && (
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 pb-16 sm:pb-20">
+          {projectData.map((project, index) => (
+            <ImageItem key={project.id} index={index} {...project} />
+          ))}
+        </div>
+      )}
 
       <Footer />
     </div>

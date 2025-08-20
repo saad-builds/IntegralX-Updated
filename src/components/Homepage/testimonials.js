@@ -14,7 +14,7 @@ const testimonialsData = [
     quote:
       "We needed a custom website with dashboards for both suppliers and dropshippers. IntegralX handled it professionally. They understood our needs, stayed on schedule, and exceeded our expectations. The final product was exactly what we wanted, smooth and hassle-free.",
     name: "Muhammad Hammad",
-    title: "Founder of easydropship.net",
+    title: "Founder easydropship.net",
     avatarSrc: "/testimonial2.svg",
   },
   {

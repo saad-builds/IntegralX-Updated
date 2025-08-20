@@ -2,6 +2,16 @@ html, body {
   overflow-x: hidden;
 }
 
+/* .test-title { */
+  /* word-break: break-word; allows wrapping long words */
+/* } */
+
+/* .test-title p a, */
+/* .test-title p span, */
+/* .test-title p .no-break-domain { */
+  /* white-space: nowrap; keep domains intact */
+/* } */
+
 
 @tailwind base;
 @tailwind components;
