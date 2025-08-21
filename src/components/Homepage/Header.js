@@ -42,50 +42,49 @@ const Header = () => {
           />
         </Link>
         <nav className="hidden md:flex items-center space-x-5 lg:space-x-7">
-          <Link
-            to="/"
-            onClick={(e) => handleNavClick(e, "/#hero")}
-            className={`text-[16px] text-gray-200 underline decoration-transparent hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold ${
-              location.pathname === "/"
-                ? "decoration-brand-yellow decoration-2"
-                : ""
-            }`}
-          >
-            Home
-          </Link>
-          <Link
-            to="/#services"
-            onClick={(e) => handleNavClick(e, "/#services")}
-            className={`text-[16px] text-gray-200 underline decoration-transparent hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold ${
-              location.hash === "#services"
-                ? "decoration-brand-yellow decoration-2"
-                : ""
-            }`}
-          >
-            Services
-          </Link>
-          <Link
-            to="/projects"
-            onClick={(e) => handleNavClick(e, "/projects")}
-            className={`text-[16px] text-gray-200 underline decoration-transparent hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold ${
-              location.pathname === "/projects"
-                ? "decoration-brand-yellow decoration-2"
-                : ""
-            }`}
-          >
-            Projects
-          </Link>
-          <Link
-            to="/about"
-            onClick={() => isMobileMenuOpen && toggleMobileMenu()}
-            className={`text-[16px] font-bold text-gray-200 underline decoration-transparent hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 transition duration-300 ${
-              location.pathname === "/about"
-                ? "decoration-brand-yellow decoration-2"
-                : ""
-            }`}
-          >
-            About Us
-          </Link>
+       <Link
+  to="/"
+  onClick={(e) => handleNavClick(e, "/#hero")}
+  className={`text-[16px] text-gray-200 hover:underline hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold ${
+    location.pathname === "/" ? "underline decoration-brand-yellow decoration-2" : ""
+  }`}
+>
+  Home
+</Link>
+
+<Link
+  to="/#services"
+  onClick={(e) => handleNavClick(e, "/#services")}
+  className="text-[16px] text-gray-200 hover:underline hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold"
+>
+  Services
+</Link>
+
+
+<Link
+  to="/projects"
+  onClick={(e) => handleNavClick(e, "/projects")}
+  className={`text-[16px] text-gray-200 hover:underline hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 duration-300 font-bold ${
+    location.pathname === "/projects"
+      ? "underline decoration-brand-yellow decoration-2"
+      : ""
+  }`}
+>
+  Projects
+</Link>
+
+<Link
+  to="/about"
+  onClick={() => isMobileMenuOpen && toggleMobileMenu()}
+  className={`text-[16px] font-bold text-gray-200 hover:underline hover:decoration-brand-yellow hover:decoration-2 underline-offset-8 transition duration-300 ${
+    location.pathname === "/about"
+      ? "underline decoration-brand-yellow decoration-2"
+      : ""
+  }`}
+>
+  About Us
+</Link>
+
           <Link
             to="/contact"
             onClick={() => isMobileMenuOpen && toggleMobileMenu()}

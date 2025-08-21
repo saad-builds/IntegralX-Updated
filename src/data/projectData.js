@@ -44,9 +44,9 @@ export const projectData = [
     title: "ANYPAPER PRO",
     subtitle: "Digital Document Collaboration and Workflow",
     description:
-      "AnyPaper Pro is a student-focused platform that connects learners with academic experts for help with assignments, projects, research papers, and presentations. Built for speed and convenience, it allows students to upload their academic tasks and get personalized assistance — all within their deadline.Whether you are stuck on a complex report or need guidance on a final year project, AnyPaper Pro ensures expert support is just a few clicks away.",
+      "AnyPaper Pro is a student-focused platform that connects learners with academic experts for help with assignments, projects, research papers, and presentations. Built for speed and convenience, it allows students to upload their academic tasks and get personalized assistance, all within their deadline.Whether you are stuck on a complex report or need guidance on a final year project, AnyPaper Pro ensures expert support is just a few clicks away.",
     keyFeatures: [
-      "Pay-per-task model — no subscriptions",
+      "Pay-per-task model, no subscriptions",
 
       "Connects students directly with qualified experts",
 
@@ -94,7 +94,7 @@ export const projectData = [
     title: "CLINIC MANAGEMENT SYSTEM",
     subtitle: "Desktop Application for Streamlined Healthcare Operations",
     description:
-      "The Clinic Management System is a powerful desktop-based solution designed to simplify and automate daily operations in small to mid-sized clinics. It centralizes all key activities — from patient registration to lab reports — and ensures smooth coordination between doctors, receptionists, and lab staff. Built with a user-friendly interface and role-based access, this application helps clinics deliver faster, more organized, and higher-quality care.",
+      "The Clinic Management System is a powerful desktop-based solution designed to simplify and automate daily operations in small to mid-sized clinics. It centralizes all key activities,from patient registration to lab reports, and ensures smooth coordination between doctors, receptionists, and lab staff. Built with a user-friendly interface and role-based access, this application helps clinics deliver faster, more organized, and higher-quality care.",
     keyFeatures: [
       "View appointments, patient history, and medical records",
       "Registration, visit tracking, and treatment history",
@@ -107,7 +107,7 @@ export const projectData = [
 
       "Searchable patient and test history",
 
-      "Offline functionality — no internet required for daily use",
+      "Offline functionality, no internet required for daily use",
 
       "Printable reports and prescriptions",
     ],
