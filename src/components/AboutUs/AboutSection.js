@@ -21,6 +21,24 @@ const fadeUp = {
     },
   },
 };
+const slideInLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
 
 function AboutSection() {
   return (
@@ -41,54 +59,56 @@ function AboutSection() {
         </div>
 
         {/* Mission & Vision Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center px-8 sm:px-10 lg:px-20 relative z-10">
-          <motion.div
-            className="w-full"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <img
-              src="/about-us-team.svg"
-              alt="Team collaborating on laptops in a modern workspace"
-              className="rounded-xl w-[380px] h-[380px] lg:w-[540px] lg:h-[480px] object-cover shadow-lg"
-            />
-          </motion.div>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-16 px-8 sm:px-10 lg:px-20 relative z-10">
+  {/* Image with black overlay */}
+  <motion.div
+    className="relative flex justify-center"
+    variants={slideInLeft}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    <img
+      src="/about-us-team.svg"
+      alt="Team collaborating on laptops in a modern workspace"
+      className="rounded-xl w-[380px] h-[380px] lg:w-[540px] lg:h-[460px] object-cover shadow-lg"
+    />
+    {/* Black overlay */}
+    <div className="absolute inset-0 bg-black/50 rounded-xl"></div>
+  </motion.div>
 
-          <motion.div
-            className="space-y-8 md:space-y-16 lg:max-w-lg"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div>
-              <h2 className="text-2xl lg:text-2xl font-semibold mb-3 text-white">
-                Our Mission
-              </h2>
-              <p className="text-base font-normal text-[16px] leading-6">
-                At IntegralX, our mission is to deliver smart, scalable digital
-                solutions that align with your business goals. We aim to
-                transform complex ideas into intuitive, high-impact platforms
-                that drive growth, enhance user experiences, and build lasting
-                value for our clients.
-              </p>
-            </div>
-            <div>
-              <h2 className="text-2xl lg:text-2xl font-semibold mb-3 text-white">
-                Our Vision
-              </h2>
-              <p className="text-base font-normal text-[16px] leading-6">
-                At IntegralX, we envision a future where innovation drives
-                meaningful digital transformation. Our vision is to become a
-                trusted partner for forward-thinking businesses by crafting
-                technology that bridges creativity, functionality, and
-                real-world impact.
-              </p>
-            </div>
-          </motion.div>
-        </div>
+  {/* Text content */}
+  <motion.div
+    className="space-y-8 md:space-y-16 lg:max-w-lg text-center md:text-left flex flex-col justify-center"
+    variants={slideInRight}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    <div>
+      <h2 className="text-2xl lg:text-2xl font-semibold mb-3 text-white">
+        Our Mission
+      </h2>
+      <p className="text-base font-normal text-[16px] leading-6 text-gray-200">
+        At IntegralX, our mission is to deliver smart, scalable digital
+        solutions that align with your business goals. We aim to transform
+        complex ideas into intuitive, high-impact platforms that drive growth,
+        enhance user experiences, and build lasting value for our clients.
+      </p>
+    </div>
+    <div>
+      <h2 className="text-2xl lg:text-2xl font-semibold mb-3 text-white">
+        Our Vision
+      </h2>
+      <p className="text-base font-normal text-[16px] leading-6 text-gray-200">
+        At IntegralX, we envision a future where innovation drives meaningful
+        digital transformation. Our vision is to become a trusted partner for
+        forward-thinking businesses by crafting technology that bridges
+        creativity, functionality, and real-world impact.
+      </p>
+    </div>
+  </motion.div>
+</div>
 
         {/* Our Work Process Section */}
         <motion.div

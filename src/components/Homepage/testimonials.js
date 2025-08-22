@@ -148,11 +148,12 @@ const Testimonials = () => {
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center">
-            <span className="mr-3 h-10 w-1.5 bg-yellow-400"></span>
-            CLIENT TESTIMONIALS
-          </h2>
-          <p className="text-sm sm:text-base md:text-xl text-white">
+         <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-white mb-8 flex items-start sm:items-center justify-center text-center">
+  <span className="mr-3 w-1.5 bg-yellow-400 self-stretch"></span>
+  CLIENT TESTIMONIALS
+</h2>
+
+          <p className="text-base md:text-lg text-gray-200 mb-16">
             We believe feedback drives innovation. Here's what our clients have
             to say about working with us.
           </p>
